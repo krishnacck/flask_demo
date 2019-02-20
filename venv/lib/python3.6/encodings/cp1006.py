@@ -1,0 +1,1 @@
+/Applications/Anaconda/anaconda/lib/python3.6/encodings/cp1006.py
