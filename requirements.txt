@@ -2,9 +2,6 @@ Flask==0.12.2
 Flask-Cors==3.0.2
 gunicorn==19.9.0
 Jinja2==2.9.4
-pandas==0.19.2
-py==1.4.32
-pycurl==7.43.0
 PyYAML==3.12
 redis==2.10.5
 virtualenv==16.4.0
