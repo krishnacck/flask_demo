@@ -1,0 +1,109 @@
+Flask Set Up
+
+pip list # lists currently installed modules
+
+Create a project directory for your stuff
+cd /project
+create .gitignore (for any files don't need in repo)
+git init
+
+
+Virtual Environments
+virtualenv venv
+
+#creates venv directory in your project directory
+
+. activate  # in current project dir # . deactivate #turns off
+
+pip install Flask
+
+create quick page
+  project/main.py
+      from flask import Flask
+
+      app = Flask(__name__)
+
+      @app.route("/")
+      def home():
+          return "Hello, World!"
+
+      @app.route("/ash")
+      def ash():
+          return "Hello, Ash!"
+
+      if __name__ == "__1main__":
+          app.run(debug=True)
+
+          $ export FLASK_APP=main.py
+          $ flask run
+           * Running on http://127.0.0.1:5000/
+
+start local server
+  python main.py
+  open web browser to http://127.0.0.1:5000
+  (or localhost:5000)
+  control+C to quit server
+
+create directory project/templates
+  create file templates/home.html
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>Flask Tutorial</title>
+    </head>
+    <body>
+      <h1> My Project using Flask </h1>
+      <p> Flask is Fun </p>
+    </body>
+  </html>
+
+  create new project/main.py
+  from flask import Flask, render_template
+
+  app = Flask(__name__)
+
+  @app.route("/")
+  def home():
+      return render_template("home.html")
+
+  @app.route("/ash")
+  def ash():
+      return "Hello, Ash!"
+
+  if __name__ == "__main__":
+      app.run(debug=True)
+
+Add more pages about.html, template.html etc.
+
+Add navigation menu
+git add .
+git commit -m "finished editing"
+
+Deploy on Heroku
+create account
+Install the Heroku CLI
+
+heroku login
+create requirements.txt  (pip freeze > req.txt may need to edit??)
+  FLASK
+  gunicorn
+
+add Procfile (with line below)
+ web: gunicorn main:app
+
+add runtime.txt
+  python-3.6.0
+
+heroku create (name or leave blank for automatic unique)
+git push heroku master
+heroku ps:scale web=1 (set 1 dyno to be active)
+
+. deactivate # to turn of virtual environment
+
+
+heroku git:clone -a ashflaskdemo
+
+or create repository on Github
+git remote add origin https://github.com/acs46/flask_demo.git
+git push -u origin master
