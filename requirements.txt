@@ -1,4 +1,4 @@
 Flask
 gunicorn
 validate_email
-pyDNS
+py3dns
