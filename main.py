@@ -1,9 +1,11 @@
 from flask import Flask, render_template
 app = Flask(__name__)
-
+from validate_email import validate_email
 @app.route("/")
 def home():
-    return render_template("home2.html")
+    is_valid = validate_email("rjgopal769@gmail.com",verify=True)
+    return is_valid
+#     return render_template("home2.html")
 
 @app.route("/about2")
 def about():
